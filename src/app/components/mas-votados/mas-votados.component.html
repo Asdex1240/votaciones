@@ -2,7 +2,7 @@
     <ul class="space-y-4">
       <li *ngFor="let voto of votos" class="flex items-center space-x-4 p-2 bg-white border-b border-gray-300 rounded-lg">
         <div>
-          <p class="text-xl">{{voto}}</p>
+          <p class="text-xl">{{voto.nombre}} Votos: {{voto.count}}</p>
         </div>
       </li>
     </ul>

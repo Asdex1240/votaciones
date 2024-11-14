@@ -1,15 +1,28 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 h-screen">
     <!-- Columna 1 -->
     <div *ngIf="userData" class="bg-white shadow-md rounded-lg p-6">
+      
         <h1 class="text-2xl font-bold">Perfil</h1>
+        <button 
+        (click)="logout()" 
+        class="top-4 right-4 bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg">
+        Logout
+      </button>
         <h3><strong>Nombre: </strong>{{userData.name}} {{userData.lastname}}</h3>
         <p><strong>Evento: </strong>{{userData.evento}}</p>
-        <p><strong>Te han votado: </strong>5 personas</p>
-        <p><strong>No has Votado</strong></p>
+        <p><strong>Te {{misVotos == 1 ? 'ha' : 'han'}} votado: </strong>{{misVotos}} {{misVotos == 1 ? 'persona' : 'personas'}}</p>
+        <p><strong>{{userHasVoted ? 'Ya haz votado' : 'No has votado'}}</strong></p>
         <p><strong>Billetera</strong></p>
         <p>{{ walletAddress || 'Conectando...' }}</p>
+        
+        <button 
+          
+          (click)="obtenerVotos()"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg">
+          Obtener votos
+        </button>
       
-        <form [formGroup]="form">
+        <form *ngIf="!userHasVoted" [formGroup]="form">
             <div class="mt-4 flex items-center space-x-4">
                 <select formControlName="dni" class="flex-grow p-2 border border-gray-300 rounded-md">
                   <option value="" disabled selected>Selecciona a quien deseas votar</option>
@@ -18,7 +31,7 @@
                 
                 <button 
                     (click)="sendForm()"
-                    [disabled]="form.invalid"
+                    [disabled]="form.invalid && userHasVoted"
                     class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg">
                   Enviar
                 </button>
@@ -34,13 +47,13 @@
       <!-- Primera tarjeta (mitad superior) -->
       <div class="bg-white shadow-md rounded-lg p-5 flex-grow flex flex-col">
         <h5 class="font-bold ">Los más votados</h5>
-        <app-bar class="flex-grow"></app-bar>  
+        <app-mas-votados [votos]="votosType.votosAcumulados" class="flex-grow"></app-mas-votados>
       </div>
       
       <!-- Segunda tarjeta (mitad inferior) -->
       <div class="bg-white shadow-md rounded-lg p-5 flex-grow flex flex-col mt-2">
         <h5 class="font-bold ">Últimos votos</h5>
-        <app-ultimos-votos class="flex-grow"></app-ultimos-votos>
+        <app-ultimos-votos [votos]="votosType.ultimosVotos" class="flex-grow"></app-ultimos-votos>
       </div>
     </div>
   </div>

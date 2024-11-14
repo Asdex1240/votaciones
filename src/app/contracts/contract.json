@@ -1,0 +1,164 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_dniInvitado",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_dniVotado",
+				"type": "uint256"
+			}
+		],
+		"name": "registrarVoto",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "dniInvitado",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "dniVotado",
+				"type": "uint256"
+			}
+		],
+		"name": "VotoEmitido",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_dniInvitado",
+				"type": "uint256"
+			}
+		],
+		"name": "comprobarSiHaVotado",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_dniVotado",
+				"type": "uint256"
+			}
+		],
+		"name": "contarVotos",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "haVotado",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "obtenerTodosLosVotos",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "dniInvitado",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "dniVotado",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct SistemaVotaciones.Voto[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "votos",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "dniInvitado",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "dniVotado",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "votosRecibidos",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
